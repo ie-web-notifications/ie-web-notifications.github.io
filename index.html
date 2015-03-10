@@ -165,31 +165,39 @@
       n.onclose = function() { addToLog(title,"onclose") };
       n.onerror = function() { addToLog(title,"onerror") };
     }
-    
-    $(function(){
+
+    function init(){
       $("button[name=send]").on("click", sendNoficiation);
-    
-      // It's required to queue the code using `window.Notification` because the
-      // latter is injected after `document.onload`.
-      setTimeout(function(){
-        var permission = Notification.permission;
-        if ("default" === permission) {
-          $("#requestPermissionButton").on("click", function() {
-            if (Notification === undefined) {
-              $("#requestPermissionButton").remove();
-              $("#permissionState").text("web notifications are not available");
-            } else {
-              Notification.requestPermission(function(permission) {
-                $("#requestPermissionButton").remove();
-                $("#permissionState").text(permission);
-              });
-            }
+      var permission = Notification.permission;
+      if ("default" === permission) {
+        $("#requestPermissionButton").on("click", function() {
+          Notification.requestPermission(function(permission) {
+            $("#requestPermissionButton").remove();
+            $("#permissionState").text(permission);
           });
+        });
+      } else {
+        $("#requestPermissionButton").remove();
+        $("#permissionState").text(permission);
+      }
+    }
+
+    var attempts = 0;
+    function waitForNotificationsAndInit() {
+      if (window['Notification'] === undefined) {
+        if (attempts < 50) {
+          attempts++;
+          setTimeout(waitForNotificationsAndInit, 100);
         } else {
           $("#requestPermissionButton").remove();
-          $("#permissionState").text(permission);
+          $("#permissionState").text("web notifications are not available");
         }
-      }, 100);
-    });
+      } else {
+        init();
+      }
+    }
+    // It's required to queue the code using `window.Notification` because the
+    // latter is injected after `document.onload`.
+    waitForNotificationsAndInit();
   </script>
 </html>
