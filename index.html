@@ -1,0 +1,195 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>IE Web Notifications (desktop notifications)</title>
+  </head>
+  <style>
+    .sep {
+      border: 0;
+      height: 10px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      width: 100%;
+      background-color: #FFFFFF;
+    }
+    .header {
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 0px;
+    }
+    .header > :first-child {
+      font-style: italic;
+      width: 100%;
+      font-size: 26px;
+      font-weight: bold;
+    }
+    .button {
+      display: inline-block;
+      border-radius: 4px;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 5px 10px;
+      vertical-align: middle;
+    }
+    .downloadNow {
+      background: #01ed15; /* Old browsers */
+      background: -ms-linear-gradient(top,  #01ed15 0%,#0ffd1f 50%,#01cd0b 51%,#01d30c 71%,#02d606 100%); /* IE10+ */
+      background: linear-gradient(to bottom,  #01ed15 0%,#0ffd1f 50%,#01cd0b 51%,#01d30c 71%,#02d606 100%); /* W3C */
+      color: white;
+    }
+    .fileIssue {
+      background: #f85032; /* Old browsers */
+      background: -ms-linear-gradient(top,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* IE10+ */
+      background: linear-gradient(to bottom,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* W3C */
+      color: white;
+    }
+
+    .main {
+      background-image: url('./bg-tiles.png');
+      background-repeat: repeat;
+    }
+    .sectionTitle {
+      padding: 15px 10px 0px; 0px;
+      height: 50px;
+      font-weight: bold;
+      font-size: 30px;
+      font-family: 'Open Sans', Arial, serif;
+    }
+    .quote {
+      box-shadow: 0px 0px 6px rgba(0,0,0,0.5);
+      border-left: 0.5em solid #DDD;
+      padding: 5px;
+      background-color: white;
+      line-height: 1.5;
+      margin-left: 550px;
+    }
+    .quote:before {
+      display: block;
+      height: 0;
+      margin-left: -0.95em;
+      font: italic 400%/1 Cochin,Georgia,"Times New Roman",serif;
+      color: #999;
+      content: "“";
+    }
+    #notificationLog {
+      height: 100px;
+      width: 300px;
+      overflow-y: scroll;
+      border: 1px solid #b8b8b8;
+      background-color: #fafafa;
+      font-size: 12px;
+    }
+  </style>
+  <body>
+    <div class="header">
+      <span>IE Web Notifications (desktop notifications)</span>
+      <a class="fileIssue button" href="https://github.com/ukot/ie_web_notifications/issues" style="float: right; margin-left: 10px;">File issue</a>
+      <a class="downloadNow button" href="goo.gl/mtlSyj" style="float: right;">Download Now</a>
+    </div>
+    <hr class="sep" />
+    <div class="main" style="padding-bottom: 100px;">
+      <div class="sectionTitle">
+        What is Web Notifications?
+      </div>
+      <hr class="sep" />
+      <div>
+        <img style="height: 400px; width: 500px; float: left;" src="img.png">
+        
+        <p>
+          <i>For users:</i>
+          <blockquote class="quote">
+            Gmail notifications let you know when you have a new email. You'll see a pop-up when a new message arrives so you can keep track of your mail even when you’re not looking at Gmail.
+            <footer>&mdash;<cite><a href="https://support.google.com/mail/answer/1075549">Google's email service help</a></cite></footer>
+          </blockquote>
+        </p>
+        <p>
+          Tested on: <code>{ Internet Explorer 10, 11 } x { Windows 7, 8.1, 10 }</code>
+        </p>
+        <p>
+          <i>For developers:</i>
+          <blockquote class="quote">
+            Web notifications defines an API for end-user notifications. A notification allows alerting the user outside the context of a web page of an occurrence, such as the delivery of email.
+            <footer>&mdash;<cite><a href="http://www.w3.org/TR/notifications/">W3C Web Notifications draft</a></cite></footer>
+          </blockquote>
+          
+        </p>
+      </div>
+      <hr class="sep" />
+      <div class="sectionTitle">
+        Try it now
+      </div>
+      <hr class="sep" />
+      <div style="float: left; width: 220px; padding-left: 10px;">
+        <div style=" margin-bottom: 10px;">
+          <span>Permission:</span>
+          <span id="permissionState">
+            <button id="requestPermissionButton" style="font-size: 12px;">request permission</button>
+          </span>
+        </div>
+        <div>
+          <input name="title" placeholder="Notification title*" type="text" required style="width: 180px; margin-bottom: 10px;"></br>
+          <input name="body" placeholder="Notification body" type="text" style="width: 180px; margin-bottom: 10px;"></br>
+          <button name="send">Send</button>
+        </div>
+      </div>
+      <div style="border-left: 1px solid grey; margin-left: 230px; padding-left: 10px;">
+        <span>Log:</span>
+        <div id="notificationLog">
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script>
+    function addToLog(val, event) {
+      var msg = "<div><span>" + event + "</span> triggered for: " + val + "</div>";
+      $("#notificationLog").append(msg);
+    };
+    
+    function sendNoficiation() {
+      var title = $.trim($("input[name=title]").val());
+      if(title === "") {
+        alert("Please enter the notification title");
+        return false;
+      };
+      var body = $.trim($("input[name=body]").val());
+      if (body !== "") {
+        var params = {
+          "body" : body
+        };
+      };
+    
+      var n = (params) ? new Notification(title, params) : new Notification(title);
+      n.onclick = function() { addToLog(title,"onclick") };
+      n.onclose = function() { addToLog(title,"onclose") };
+      n.onerror = function() { addToLog(title,"onerror") };
+    }
+    
+    $(function(){
+      $("button[name=send]").on("click", sendNoficiation);
+    
+      // It's required to queue the code using `window.Notification` because the
+      // latter is injected after `document.onload`.
+      setTimeout(function(){
+        var permission = Notification.permission;
+        if ("default" === permission) {
+          $("#requestPermissionButton").on("click", function() {
+            if (Notification === undefined) {
+              $("#requestPermissionButton").remove();
+              $("#permissionState").text("web notifications are not available");
+            } else {
+              Notification.requestPermission(function(permission) {
+                $("#requestPermissionButton").remove();
+                $("#permissionState").text(permission);
+              });
+            }
+          });
+        } else {
+          $("#requestPermissionButton").remove();
+          $("#permissionState").text(permission);
+        }
+      }, 0);
+    });
+  </script>
+</html>
