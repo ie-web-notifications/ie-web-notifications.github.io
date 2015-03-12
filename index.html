@@ -85,7 +85,7 @@
     <div class="header">
       <span>IE Web Notifications (desktop notifications)</span>
       <a class="fileIssue button" href="https://github.com/ukot/ie_web_notifications/issues" style="float: right; margin-left: 10px;">File issue</a>
-      <a class="downloadNow button" href="https://github.com/ukot/ie_web_notifications/releases/download/v0.1/ie_web_notifications.setup.msi" style="float: right;">Download Now</a>
+      <a class="downloadNow button" onclick="javascript: onDownloadNowClicked(this);" href="https://github.com/ukot/ie_web_notifications/releases/download/v0.1/ie_web_notifications.setup.msi" style="float: right;">Download Now</a>
     </div>
     <hr class="sep" />
     <div class="main" style="padding-bottom: 100px;">
@@ -223,6 +223,17 @@
     // It's required to queue the code using `window.Notification` because the
     // latter is injected after `document.onload`.
     waitForNotificationsAndInit();
+  </script>
+
+  <script>
+  function onDownloadNowClicked(el) {
+    ga('send', 'event', {
+      'eventCategory': 'Downloading',
+      'eventAction': 'DownloadNow',
+      'eventLabel': el.href
+    });
+    return true;
+  }
   </script>
 
   <script>
