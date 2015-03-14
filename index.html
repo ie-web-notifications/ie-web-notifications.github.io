@@ -80,6 +80,11 @@
       background-color: #fafafa;
       font-size: 12px;
     }
+
+    .tryItNowField {
+      width: 180px;
+      margin-bottom: 10px;
+    }
   </style>
   <body>
     <div class="header">
@@ -125,8 +130,9 @@
           </span>
         </div>
         <div>
-          <input name="title" placeholder="Notification title*" type="text" required style="width: 180px; margin-bottom: 10px;"></br>
-          <input name="body" placeholder="Notification body" type="text" style="width: 180px; margin-bottom: 10px;"></br>
+          <input type="text" class="tryItNowField" name="title" placeholder="Notification title*"  required style=""></br>
+          <input type="text" class="tryItNowField" name="body"  placeholder="Notification body"></br>
+          <input type="text" class="tryItNowField" name="tag"   placeholder="Notification tag"></br>
           <button name="send">Send</button>
         </div>
       </div>
@@ -179,14 +185,20 @@
       };
       var body = $.trim($("input[name=body]").val());
       if (body !== "") {
-        var params = {
-          "body" : body
-        };
+        var params = params ||{};
+         params.body = body;
       };
-    
+      
+      var tag = $.trim($("input[name=tag]").val());
+      if (tag !== "") {
+        var params = params ||{};
+         params.tag = tag;
+      };
+      
       var n = (params) ? new Notification(title, params) : new Notification(title);
       n.onclick = function() { addToLog(title,"onclick") };
       n.onclose = function() { addToLog(title,"onclose") };
+      n.onreplaced = function() { addToLog(title,"onreplaced") };
       n.onerror = function() { addToLog(title,"onerror") };
     }
 
