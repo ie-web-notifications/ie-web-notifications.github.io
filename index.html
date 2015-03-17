@@ -3,66 +3,80 @@
   <head>
     <meta charset="UTF-8">
     <title>IE Web Notifications (desktop notifications)</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   </head>
   <style>
-    .sep {
-      border: 0;
-      height: 10px;
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
-      width: 100%;
-      background-color: #FFFFFF;
-    }
-    .header {
-      padding-left: 20px;
-      padding-right: 20px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
-    .header > :first-child {
+    .navbar-default .navbar-brand {
+      color: black;
       font-style: italic;
-      width: 100%;
       font-size: 26px;
       font-weight: bold;
+      letter-spacing: 0.5px;
+      font-family: "Times New Roman"
     }
-    .button {
-      display: inline-block;
-      border-radius: 4px;
-      font-weight: bold;
-      text-decoration: none;
-      padding: 5px 10px;
-      vertical-align: middle;
+    .navbar-default .navbar-brand:hover {
+      color: black;
     }
+
+    /*
+      Customization link
+      http://cssgradientbutton.com/?bg0=4CDA30&bg1=1CA32E&bg2=39b621&bg3=157722&r=3&p_top=10&p_right=10&p_bottom=10&p_left=10&w_auto=yes&w=150&text_c=FFFFFF&textshadow=yes&textshadow_c=000000&shadow_bt=0&shadow_c=B4B5B5&border_s=1&border_c=38b220&border_c_hover=2c8b19&f_size_auto=no&f_s=12&font=arial, helvetica, sans-serif&bold=yes&inset=no&s_x=0&s_y=0&s_b=0&t_s_px=-1&b_top=1&b_right=1&b_bottom=1&b_left=1&bt_c=38b220&br_c=38b220&bb_c=38b220&bl_c=38b220&bhover_top=1&bhover_right=1&bhover_bottom=1&bhover_left=1&bhover_t_c=2c8b19&bhover_r_c=2c8b19&bhover_b_c=2c8b19&bhover_l_c=2c8b19&bh_top=1&br_top=3&br_right=3&br_bottom=3&br_left=3&h_s=-1&v_s=-1&b_s=0&o_s=0.3
+    */
     .downloadNow {
-      background: #01ed15; /* Old browsers */
-      background: -ms-linear-gradient(top,  #01ed15 0%,#0ffd1f 50%,#01cd0b 51%,#01d30c 71%,#02d606 100%); /* IE10+ */
-      background: linear-gradient(to bottom,  #01ed15 0%,#0ffd1f 50%,#01cd0b 51%,#01d30c 71%,#02d606 100%); /* W3C */
-      color: white;
-    }
-    .fileIssue {
-      background: #f85032; /* Old browsers */
-      background: -ms-linear-gradient(top,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* IE10+ */
-      background: linear-gradient(to bottom,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* W3C */
+      border:1px solid #38b220; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+      background-color: #4CDA30; background-image: -webkit-gradient(linear, left top, left bottom, from(#4CDA30), to(#1CA32E));
+      background-image: -webkit-linear-gradient(top, #4CDA30, #1CA32E);
+      background-image: -moz-linear-gradient(top, #4CDA30, #1CA32E);
+      background-image: -ms-linear-gradient(top, #4CDA30, #1CA32E);
+      background-image: -o-linear-gradient(top, #4CDA30, #1CA32E);
+      background-image: linear-gradient(to bottom, #4CDA30, #1CA32E);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#4CDA30, endColorstr=#1CA32E);
       color: white;
     }
 
-    .main {
-      background-image: url('./bg-tiles.png');
-      background-repeat: repeat;
+    .downloadNow:hover {
+      border:1px solid #2c8b19;
+      background-color: #39b621; background-image: -webkit-gradient(linear, left top, left bottom, from(#39b621), to(#157722));
+      background-image: -webkit-linear-gradient(top, #39b621, #157722);
+      background-image: -moz-linear-gradient(top, #39b621, #157722);
+      background-image: -ms-linear-gradient(top, #39b621, #157722);
+      background-image: -o-linear-gradient(top, #39b621, #157722);
+      background-image: linear-gradient(to bottom, #39b621, #157722);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#39b621, endColorstr=#157722);
+      color: white;
     }
-    .sectionTitle {
-      padding: 15px 10px 0px; 0px;
-      height: 50px;
-      font-weight: bold;
-      font-size: 30px;
-      font-family: 'Open Sans', Arial, serif;
+
+    /*
+      Customization link
+      http://cssgradientbutton.com/?bg0=DA3C3A&bg1=8C1D1D&bg2=bd2524&bg3=621414&r=3&p_top=10&p_right=10&p_bottom=10&p_left=10&w_auto=yes&w=150&text_c=FFFFFF&textshadow=yes&textshadow_c=000000&shadow_bt=0&shadow_c=B4B5B5&border_s=1&border_c=b92523&border_c_hover=921d1c&f_size_auto=no&f_s=12&font=arial, helvetica, sans-serif&bold=yes&inset=no&s_x=0&s_y=0&s_b=0&t_s_px=-1&b_top=1&b_right=1&b_bottom=1&b_left=1&bt_c=b92523&br_c=b92523&bb_c=b92523&bl_c=b92523&bhover_top=1&bhover_right=1&bhover_bottom=1&bhover_left=1&bhover_t_c=921d1c&bhover_r_c=921d1c&bhover_b_c=921d1c&bhover_l_c=921d1c&bh_top=1&br_top=3&br_right=3&br_bottom=3&br_left=3&h_s=-1&v_s=-1&b_s=0&o_s=0.3
+    */
+    .fileIssue{
+      border:1px solid #b92523; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+      background-color: #DA3C3A; background-image: -webkit-gradient(linear, left top, left bottom, from(#DA3C3A), to(#8C1D1D));
+      background-image: -webkit-linear-gradient(top, #DA3C3A, #8C1D1D);
+      background-image: -moz-linear-gradient(top, #DA3C3A, #8C1D1D);
+      background-image: -ms-linear-gradient(top, #DA3C3A, #8C1D1D);
+      background-image: -o-linear-gradient(top, #DA3C3A, #8C1D1D);
+      background-image: linear-gradient(to bottom, #DA3C3A, #8C1D1D);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#DA3C3A, endColorstr=#8C1D1D);
+      color: white;
     }
+
+    .fileIssue:hover {
+      border:1px solid #921d1c;
+      background-color: #bd2524; background-image: -webkit-gradient(linear, left top, left bottom, from(#bd2524), to(#621414));
+      background-image: -webkit-linear-gradient(top, #bd2524, #621414);
+      background-image: -moz-linear-gradient(top, #bd2524, #621414);
+      background-image: -ms-linear-gradient(top, #bd2524, #621414);
+      background-image: -o-linear-gradient(top, #bd2524, #621414);
+      background-image: linear-gradient(to bottom, #bd2524, #621414);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#bd2524, endColorstr=#621414);
+      color: white;
+    }
+
     .quote {
       box-shadow: 0px 0px 6px rgba(0,0,0,0.5);
       border-left: 0.5em solid #DDD;
       padding: 5px;
       background-color: white;
       line-height: 1.5;
-      margin-left: 550px;
     }
     .quote:before {
       display: block;
@@ -72,150 +86,290 @@
       color: #999;
       content: "“";
     }
-    #notificationLog {
-      height: 100px;
-      width: 300px;
-      overflow-y: scroll;
-      border: 1px solid #b8b8b8;
-      background-color: #fafafa;
+
+    .hide {
+      display: none;
+    }
+  </style>
+  <style>
+    .notificationWindow {
+      width: 280px;
+      height: 60px;
+      background: white;
+    }
+    .notificationWindow > :first-child {
+      float: left;
+      width: 60px;
+      height: 60px;
+      background-color: #F0F0F0;
+    }
+    .notificationWindow > :nth-child(2){
+      padding-left: 65px;
+    }
+    .notificationWindowCloseButton {
+      float: right;
+      margin-right: 5px;
+      width: 20px;
+      height: 20px;
+      background-color: #EDEDED;
+      vertical-align: middle;
+      text-align: center;
+      font-family: "Consolas";
+      color: black;
+    }
+    .notificationWindowCloseButton:hover {
+      background-color: #FF0000;
+      color: black;
+      text-decoration: none;
+    }
+    .notificationWindowTitle {
+      font-weight: 500;
+      font-family: "Segoe UI";
+      font-size: 14px;
+    }
+    .notificationWindowBody {
+      font-family: "Segoe UI";
       font-size: 12px;
     }
-
-    .tryItNowField {
-      width: 180px;
-      margin-bottom: 10px;
+    .notificationWindowHeader {
+      padding-top: 2px;
     }
   </style>
   <body>
-    <div class="header">
-      <span>IE Web Notifications (desktop notifications)</span>
-      <a class="fileIssue button" href="https://github.com/ukot/ie_web_notifications/issues" style="float: right; margin-left: 10px;">File issue</a>
-      <a class="downloadNow button" onclick="javascript: onDownloadNowClicked(this);" href="https://github.com/ukot/ie_web_notifications/releases/download/v0.1/ie_web_notifications.setup.msi" style="float: right;">Download Now</a>
+    <div class="navbar navbar-default navbar-fixed-top active">
+      <div class="navbar-inner">
+        <div class="container">
+          <a href="#" class="navbar-brand">IE Web Notifications (desktop notifications)</a>
+          <div class="navbar-right">
+            <a class="downloadNow btn navbar-btn"
+                 onclick="javascript: onDownloadNowClicked(this);"
+                 href="https://github.com/ukot/ie_web_notifications/releases/download/v0.1/ie_web_notifications.setup.msi">
+                <span class="glyphicon glyphicon-download-alt"></span> Download now
+            </a>
+            <a class="fileIssue btn navbar-btn" href="https://github.com/ukot/ie_web_notifications/issues">
+              <span class="glyphicon glyphicon-sendsend"></span>File issue
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-    <hr class="sep" />
-    <div class="main" style="padding-bottom: 100px;">
-      <div class="sectionTitle">
-        What is Web Notifications?
-      </div>
-      <div>
-        <img style="height: 400px; width: 500px; float: left;" src="img.png">
-        <p>
-          <i>For users:</i>
-          <blockquote class="quote">
-            Gmail notifications let you know when you have a new email. You'll see a pop-up when a new message arrives so you can keep track of your mail even when you’re not looking at Gmail.
-            <footer>&mdash;<cite><a href="https://support.google.com/mail/answer/1075549">Google's email service help</a></cite></footer>
-          </blockquote>
-        </p>
-        <p>
-          Tested on: <code>{ Internet Explorer 10, 11 } x { Windows 7, 8.1, 10 }</code>
-        </p>
-        <p>
-          <i>For developers:</i>
-          <blockquote class="quote">
-            Web notifications defines an API for end-user notifications. A notification allows alerting the user outside the context of a web page of an occurrence, such as the delivery of email.
-            <footer>&mdash;<cite><a href="http://www.w3.org/TR/notifications/">W3C Web Notifications draft</a></cite></footer>
-          </blockquote>
-          
-        </p>
-      </div>
-      <hr class="sep" />
-      <div class="sectionTitle">
-        Try it now
-      </div>
-      <div style="float: left; width: 220px; padding-left: 10px;">
-        <div style=" margin-bottom: 10px;">
-          <span>Permission:</span>
-          <span id="permissionState">
-            <button id="requestPermissionButton" style="font-size: 12px;">request permission</button>
-          </span>
-        </div>
-        <div>
-          <input type="text" class="tryItNowField" name="title" placeholder="Notification title*"  required style=""></br>
-          <input type="text" class="tryItNowField" name="body"  placeholder="Notification body"></br>
-          <input type="text" class="tryItNowField" name="tag"   placeholder="Notification tag"></br>
-          <button name="send">Send</button>
+
+    <div class="container" style="margin-top: 60px;">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="page-header">
+            <h3>What is Web Notifications?</h3>
+          </div>
         </div>
       </div>
-      <div style="border-left: 1px solid grey; margin-left: 230px; padding-left: 10px;">
-        <span>Log:</span>
-        <div id="notificationLog">
+      <div class="row">
+        <div class="col-md-6">
+          <img class="img-responsive" src="img.png">
+        </div>
+        <div class="col-md-6">
+          <p>
+            <i><h4>For users:</h4></i>
+            <blockquote class="quote">
+              Gmail notifications let you know when you have a new email. You'll see a pop-up when a new message arrives so you can keep track of your mail even when you’re not looking at Gmail.
+              <footer><cite><a href="https://support.google.com/mail/answer/1075549">Google's email service help</a></cite></footer>
+            </blockquote>
+          </p>
+          <p>
+            <i><h4>For developers:</h4></i>
+            <blockquote class="quote">
+              Web notifications defines an API for end-user notifications. A notification allows alerting the user outside the context of a web page of an occurrence, such as the delivery of email.
+              <footer><cite><a href="http://www.w3.org/TR/notifications/">W3C Web Notifications draft</a></cite></footer>
+            </blockquote>
+          </p>
+          <p>
+            <h4>Tested on:</h4>
+            <span style="font-family: Consolas;">
+              <span class="btn btn-success" style="cursor: default">Internet Explorer 10, 11</span>
+              x
+              <span class="btn btn-success" style="cursor: default;">Windows 7, 8.1, 10</span>
+            </span>
+          </p>
         </div>
       </div>
-      <hr class="sep" />
-      <div class="sectionTitle">
-        Additional notes:
+      <div class="row">
+        <div class="col-md-12">
+          <div class="page-header">
+            <h3>Try it now</h3>
+          </div>
+        </div>
       </div>
-      <div>
-        <ul>
-          <li>
-            It already supports 
-            <ul>
-              <li><code>Notification.requestPermission(function(res){})</code></li>
-              <li><code>Notification.permission</code></li>
-              <li>showing of the Notification with title and body according to chosen permission</li>
-              <li>calls of <code>onclick(function(){})</code>, <code>onclose(function(){})</code> and <code>onerror(function(){})</code></li>
-            </ul>
-          </li>
-          <li>
-            The installation is UI less, so if there is no any error message it's probably successfully installed. Launch Internet Explorer, enable the plugin, now it works in a new tab or after restarting the browser.
-          </li>
-          <li>
-            Neither installer nor the plugin files are signed because it's a plugin I've developed at my spare time, I can add it later in case of necessity.
-          </li>
-        </ul>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="notificationDetecting" class="progress">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+              Detecting of Notification availability
+            </div>
+          </div>
+          <div id="permissionRequestAlert"   class="alert alert-info    hide" role="alert"><center><button id="requestPermissionButton" class="btn btn-default">Request permission</button></center></div>
+          <div id="permissionGrantedAlert"   class="alert alert-success hide" role="alert"><center><b>Notifications are granted on this web site</b></center></div>
+          <div id="permissionDeniedAlert"    class="alert alert-danger  hide" role="alert"><center><b>Notifications are denied on this web site</b></center></div>
+          <div id="notificationAbsenceAlert" class="alert alert-danger  hide" role="alert"><center><b>Notifications are not available</b></center></div>
+        </div>
       </div>
-      <hr class="sep" />
-      <div class="sectionTitle" style="color: #2B7CFF;">
-        Have fun!
+      <div class="row">
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-md-12">
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label for="inputTitle" class="col-md-2 control-label">Title*</label>
+                  <div class="col-md-10">
+                    <input type="text" class="form-control" id="inputTitle" placeholder="Notification title*" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputBody" class="col-md-2 control-label">Body</label>
+                  <div class="col-md-10">
+                    <input type="text" class="form-control" id="inputBody" placeholder="Notification body" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputTag" class="col-md-2 control-label">Tag</label>
+                  <div class="col-md-10">
+                    <input type="text" class="form-control" id="inputTag" placeholder="Notification tag" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-offset-10 col-md-2">
+                    <button id="sendButton" type="submit" class="btn btn-default" onclick="return false;">Send</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div id="logNotificationWindow">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="page-header">
+            <h3>Additional notes</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <ul>
+            <li>
+              It already supports 
+              <ul>
+                <li><code>Notification.requestPermission(function(res){})</code></li>
+                <li><code>Notification.permission</code></li>
+                <li>showing of the <i>Notification</i> with title and body according to chosen permission</li>
+                <li>replacing the <i>Notification</i> with the same non-empty <i>tag</i></li>
+                <li>closing of the <i>Notification</i></li>
+                <li>calls of <code>onshow(function(){})</code>, <code>onclick(function(){})</code>, <code>onclose(function(){})</code> and <code>onerror(function(){})</code></li>
+                <li>queueing of the <i>Notification</i>s and stacked display</li>
+              </ul>
+            </li>
+            <li>
+              The installation is UI less, so if there is no any error message it's probably successfully installed. Launch Internet Explorer, enable the plugin, now it works in a new tab or after restarting the browser.
+            </li>
+            <li>
+              Neither installer nor the plugin files are signed because it's a plugin I've developed at my spare time, I can add it later in case of necessity.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 50px;">
+      <div class="col-md-12">
+        <center><h1 style="color: #2B7CFF;">Have fun!</h1></center>
+      </div>
+    </div>
+
+    <div id="notificationWindowTemplate" style="display: none;">
+      <div class="row">
+        <div class="col-sm-12" style="margin-bottom: 5px;">
+          <div class="notificationWindow" style="float:left;">
+            <div><!-- icon placeholder --></div>
+            <div>
+              <div class="notificationWindowHeader">
+                <span class="notificationWindowTitle"></span><a class="notificationWindowCloseButton">x</a>
+              </div>
+              <div class="notificationWindowBody"></div>
+            </div>
+          </div>
+          <div style="margin-left: 230px; width: 280px; background-color: #eeeeee; color: black;">
+            <div>tag: <span class="notificationWindowTag"></span></div>
+            <div class="log">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
-  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <script>
-    function addToLog(val, event) {
-      var msg = "<div><span>" + event + "</span> triggered for: " + val + "</div>";
-      $("#notificationLog").append(msg);
+    function addToLog(logEl, event) {
+      var msg = "<div><span>" + event + "</span></div>";
+      logEl.append(msg);
     };
-    
+
     function sendNoficiation() {
-      var title = $.trim($("input[name=title]").val());
+      var notificationWindow = $("#notificationWindowTemplate").children().clone();
+      var title = $.trim($("#inputTitle").val());
       if(title === "") {
         alert("Please enter the notification title");
         return false;
       };
-      var body = $.trim($("input[name=body]").val());
+      notificationWindow.find(".notificationWindowTitle").text(title);
+      var body = $.trim($("#inputBody").val());
       if (body !== "") {
         var params = params ||{};
-         params.body = body;
+        params.body = body;
+        notificationWindow.find(".notificationWindowBody").text(body);
       };
-      
-      var tag = $.trim($("input[name=tag]").val());
+
+      var tag = $.trim($("#inputTag").val());
       if (tag !== "") {
         var params = params ||{};
          params.tag = tag;
+         notificationWindow.find(".notificationWindowTag").text(tag);
       };
-      
+
+      var notificationWindowLog = notificationWindow.find(".log");
+
       var n = (params) ? new Notification(title, params) : new Notification(title);
-      n.onclick = function() { addToLog(title,"onclick") };
-      n.onclose = function() { addToLog(title,"onclose") };
-      n.onreplaced = function() { addToLog(title,"onreplaced") };
-      n.onerror = function() { addToLog(title,"onerror") };
-      n.onshown = function() { addToLog(title,"onshown") };
+      n.onclick = function() { addToLog(notificationWindowLog,"onclick") };
+      n.onclose = function() { addToLog(notificationWindowLog,"onclose") };
+      n.onreplaced = function() { addToLog(notificationWindowLog,"onreplaced") };
+      n.onerror = function() { addToLog(notificationWindowLog,"onerror") };
+      n.onshown = function() { addToLog(notificationWindowLog,"onshown") };
+
+      notificationWindow.find(".notificationWindowCloseButton").on("click", function(){
+        n.close();
+      });
+      notificationWindow.appendTo($("#logNotificationWindow"));
     }
 
-    function init(){
-      $("button[name=send]").on("click", sendNoficiation);
-      var permission = Notification.permission;
+    function init(permission){
+      permission = permission || "default";
       if ("default" === permission) {
         $("#requestPermissionButton").on("click", function() {
-          Notification.requestPermission(function(permission) {
-            $("#requestPermissionButton").remove();
-            $("#permissionState").text(permission);
-          });
+          Notification.requestPermission(function(permission){init(permission);});
         });
+        $("#permissionRequestAlert").removeClass("hide");
       } else {
-        $("#requestPermissionButton").remove();
-        $("#permissionState").text(permission);
+        $("#permissionRequestAlert").addClass("hide");
+        if ("denied" === permission) {
+          $("#permissionDeniedAlert").removeClass("hide");
+        } else if ("granted" === permission) {
+          $("#permissionGrantedAlert").removeClass("hide");
+        }
+        // todo: enable form
+        $("#sendButton").on("click", sendNoficiation);
       }
     }
 
@@ -226,11 +380,12 @@
           attempts++;
           setTimeout(waitForNotificationsAndInit, 100);
         } else {
-          $("#requestPermissionButton").remove();
-          $("#permissionState").text("web notifications are not available");
+          $("#notificationDetecting").addClass("hide");
+          $("#notificationAbsenceAlert").removeClass("hide");
         }
       } else {
-        init();
+        $("#notificationDetecting").addClass("hide");
+        init(Notification.permission);
       }
     }
     // It's required to queue the code using `window.Notification` because the
