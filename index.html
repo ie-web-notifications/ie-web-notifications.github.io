@@ -96,6 +96,7 @@
       width: 280px;
       height: 60px;
       background: white;
+      border: 1px solid #EFEFEF;
     }
     .notificationWindow > :first-child {
       float: left;
@@ -134,6 +135,10 @@
     .notificationWindowHeader {
       padding-top: 2px;
     }
+    .notificationWindowIcon > img {
+      height: 60px;
+      width: 60px;
+    }
   </style>
   <body>
     <div class="navbar navbar-default navbar-fixed-top active">
@@ -143,7 +148,7 @@
           <div class="navbar-right">
             <a class="downloadNow btn navbar-btn"
                  onclick="javascript: onDownloadNowClicked(this);"
-                 href="https://github.com/ukot/ie_web_notifications/releases/download/v0.2/ie_web_notifications.setup.msi">
+                 href="https://github.com/ukot/ie_web_notifications/releases/download/v0.3/ie_web_notifications.setup.msi">
                 <span class="glyphicon glyphicon-download-alt"></span> Download now
             </a>
             <a class="fileIssue btn navbar-btn" href="https://github.com/ukot/ie_web_notifications/issues">
@@ -235,6 +240,12 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label for="inputIcon" class="col-md-2 control-label">Icon</label>
+                  <div class="col-md-10">
+                    <input type="text" class="form-control" id="inputIcon" placeholder="Notification icon" value="http://ukot.github.io/ie_web_notifications/logo.png" />
+                  </div>
+                </div>
+                <div class="form-group">
                   <div class="col-md-offset-10 col-md-2">
                     <button id="sendButton" type="submit" class="btn btn-default" onclick="return false;">Send</button>
                   </div>
@@ -290,7 +301,7 @@
       <div class="row">
         <div class="col-sm-12" style="margin-bottom: 5px;">
           <div class="notificationWindow" style="float:left;">
-            <div><!-- icon placeholder --></div>
+            <div class="notificationWindowIcon"><!-- icon placeholder --></div>
             <div>
               <div class="notificationWindowHeader">
                 <span class="notificationWindowTitle"></span><a class="notificationWindowCloseButton">x</a>
@@ -337,6 +348,13 @@
         var params = params ||{};
          params.tag = tag;
          notificationWindow.find(".notificationWindowTag").text(tag);
+      };
+
+      var iconPath = $.trim($("#inputIcon").val());
+      if (iconPath !== "") {
+        var params = params ||{};
+         params.icon = iconPath;
+         $('<img />', { src: iconPath }).appendTo(notificationWindow.find(".notificationWindowIcon"));
       };
 
       var notificationWindowLog = notificationWindow.find(".log");
