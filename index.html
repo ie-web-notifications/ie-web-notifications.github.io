@@ -146,16 +146,16 @@
     <div class="navbar navbar-default navbar-fixed-top active">
       <div class="navbar-inner">
         <div class="container">
-          <a href="#" class="navbar-brand"><span><img class="img-responsive" src="logo.png" style="height: 38px;display: inline-block; margin-top: -5px; margin-right: 10px;"></span>IE Web Notifications (desktop notifications)</a>
+          <a href="#" class="navbar-brand"><span><img class="img-responsive" src="logo.png" style="height: 38px;display: inline-block; margin-top: -5px; margin-right: 10px;" /></span>IE Web Notifications (desktop notifications)</a>
           <div class="navbar-right">
             <a class="downloadNow btn navbar-btn"
                  onclick="javascript: onDownloadNowClicked(this);"
-                 href="https://github.com/ukot/ie_web_notifications/releases/download/v0.6/ie_web_notifications.setup.msi">
+                 href="https://github.com/ukot/ie_web_notifications/releases/download/v0.7/ie_web_notifications.setup.msi">
                 <span class="glyphicon glyphicon-download-alt"></span> Download now
             </a>
             <a class="downloadNow btn navbar-btn"
                  onclick="javascript: onDownloadNowClicked(this);"
-                 href="https://github.com/ukot/ie_web_notifications/releases/download/v0.6/ie_web_notifications.setup32.msi">
+                 href="https://github.com/ukot/ie_web_notifications/releases/download/v0.7/ie_web_notifications.setup32.msi">
                 <span class="glyphicon glyphicon-download-alt"></span> Download now for x86 (32 bit)
             </a>
             <a class="fileIssue btn navbar-btn" href="https://github.com/ukot/ie_web_notifications/issues">
@@ -176,7 +176,7 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <img class="img-responsive" src="img.png">
+          <img class="img-responsive" src="img.png" />
         </div>
         <div class="col-md-6">
           <p>
@@ -192,6 +192,9 @@
               Web notifications defines an API for end-user notifications. A notification allows alerting the user outside the context of a web page of an occurrence, such as the delivery of email.
               <footer><cite><a href="http://www.w3.org/TR/notifications/">W3C Web Notifications draft</a></cite></footer>
             </blockquote>
+          </p>
+          <p>
+            <h4>Version: <code>0.7</code></h4>
           </p>
           <p>
             <h4>Tested on:</h4>
@@ -287,7 +290,8 @@
                 <li>calls of <code>onshow(function(){})</code>, <code>onclick(function(){})</code>, <code>onclose(function(){})</code> and <code>onerror(function(){})</code></li>
                 <li>queueing of the <i>Notification</i>s and stacked display</li>
                 <li>icon parameter</li>
-                <li>Settings window to see and manage configured web sites (right-click on Notification window, <s><a href="https://github.com/ukot/ie_web_notifications/issues/4">#4</a></s>)</li>
+                <li><i>Settings window</i> to see and manage configured web sites (right-click on Notification window, or run <i>IE Web Notifications</i> from the start menu <s><a href="https://github.com/ukot/ie_web_notifications/issues/4">#4</a></s>)</li>
+                <li>Toast notifications (one can enable them on the <i>Settings window</i>)<code>[experimental]</code></li>
               </ul>
             </li>
             <li>
