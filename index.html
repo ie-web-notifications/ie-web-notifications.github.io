@@ -7,6 +7,8 @@
     <meta name="Description" content="IE Web Notifications is Internet Explorer Addon which provides you with awesome Web Notifications functionality." />
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
   </head>
   <style>
     .navbar-default .navbar-brand {
@@ -141,6 +143,9 @@
       height: 60px;
       width: 60px;
     }
+    #links > a > img {
+      width: 100px;
+    }
   </style>
   <body>
     <div class="navbar navbar-default navbar-fixed-top active">
@@ -179,7 +184,18 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <img class="img-responsive" src="img.png" />
+          <div><img id="welcome-screenshot" class="img-responsive" src="img.png" style="cursor: pointer;" /></div>
+          <div id="links">
+            <a href="img/ie-notification-now-available.png" title="IE Web Notifications" data-gallery>
+              <img src="img/ie-notification-now-available_thumbnail.png" alt="IE Web Notifications">
+            </a>
+            <a href="img/welcome-toast.png" title="Toast notifications" data-gallery>
+              <img src="img/welcome-toast.png" alt="Toast notifications">
+            </a>
+            <a href="img/how-to-get-settings-window.png" title="How to get Settings Window" data-gallery>
+              <img src="img/how-to-get-settings-window_thumbnail.png" alt="How to get Settings Window">
+            </a>
+          </div>
         </div>
         <div class="col-md-6">
           <p>
@@ -330,6 +346,40 @@
         </div>
       </div>
     </div>
+    <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-use-bootstrap-modal="false">
+      <!-- The container for the modal slides -->
+      <div class="slides"></div>
+      <!-- Controls for the borderless lightbox -->
+      <h3 class="title"></h3>
+      <a class="prev">‹</a>
+      <a class="next">›</a>
+      <a class="close">×</a>
+      <a class="play-pause"></a>
+      <ol class="indicator"></ol>
+      <!-- The modal dialog, which will be used to wrap the lightbox content -->
+      <div class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" aria-hidden="true">&times;</button>
+              <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body next"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left prev">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                Previous
+              </button>
+              <button type="button" class="btn btn-primary next">
+                Next
+                <i class="glyphicon glyphicon-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 
   <!-- Latest compiled and minified JavaScript -->
@@ -422,6 +472,18 @@
     // It's required to queue the code using `window.Notification` because the
     // latter is injected after `document.onload`.
     waitForNotificationsAndInit();
+  </script>
+
+  <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+  <script src="js/bootstrap-image-gallery.min.js"></script>
+
+  <script>
+    $(function(){
+      $("#welcome-screenshot").on("click", function(event){
+        event.preventDefault();
+        blueimp.Gallery($('#links a'), $('#blueimp-gallery').data());
+      });
+    });
   </script>
 
   <script>
