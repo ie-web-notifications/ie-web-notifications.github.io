@@ -198,31 +198,31 @@
           </div>
         </div>
         <div class="col-md-6">
-          <p>
+          <div>
             <h4><i>For users:</i></h4>
             <blockquote class="quote">
               Gmail notifications let you know when you have a new email. You'll see a pop-up when a new message arrives so you can keep track of your mail even when you’re not looking at Gmail.
               <footer><cite><a href="https://support.google.com/mail/answer/1075549">Google's email service help</a></cite></footer>
             </blockquote>
-          </p>
-          <p>
+          </div>
+          <div>
             <h4><i>For developers:</i></h4>
             <blockquote class="quote">
               Web notifications defines an API for end-user notifications. A notification allows alerting the user outside the context of a web page of an occurrence, such as the delivery of email.
               <footer><cite><a href="http://www.w3.org/TR/notifications/">W3C Web Notifications draft</a></cite></footer>
             </blockquote>
-          </p>
-          <p>
+          </div>
+          <div>
             <h4>Version: <code>0.8.1</code></h4>
-          </p>
-          <p>
+          </div>
+          <div>
             <h4>Tested on:</h4>
             <span style="font-family: Consolas;">
               <span class="btn btn-success" style="cursor: default">Internet Explorer 10, 11</span>
               x
               <span class="btn btn-success" style="cursor: default;">Windows 7, 8.1, 10</span>
             </span>
-          </p>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -380,129 +380,129 @@
         </div>
       </div>
     </div>
-  </body>
 
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <script>
-    function addToLog(logEl, event) {
-      var msg = "<div><span>" + event + "</span></div>";
-      logEl.append(msg);
-    };
-
-    function sendNoficiation() {
-      var notificationWindow = $("#notificationWindowTemplate").children().clone();
-      var title = $.trim($("#inputTitle").val());
-      if(title === "") {
-        alert("Please enter the notification title");
-        return false;
-      };
-      notificationWindow.find(".notificationWindowTitle").text(title);
-      var body = $.trim($("#inputBody").val());
-      if (body !== "") {
-        var params = params ||{};
-        params.body = body;
-        notificationWindow.find(".notificationWindowBody").text(body);
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script>
+      function addToLog(logEl, event) {
+        var msg = "<div><span>" + event + "</span></div>";
+        logEl.append(msg);
       };
 
-      var tag = $.trim($("#inputTag").val());
-      if (tag !== "") {
-        var params = params ||{};
-         params.tag = tag;
-         notificationWindow.find(".notificationWindowTag").text(tag);
-      };
+      function sendNoficiation() {
+        var notificationWindow = $("#notificationWindowTemplate").children().clone();
+        var title = $.trim($("#inputTitle").val());
+        if(title === "") {
+          alert("Please enter the notification title");
+          return false;
+        };
+        notificationWindow.find(".notificationWindowTitle").text(title);
+        var body = $.trim($("#inputBody").val());
+        if (body !== "") {
+          var params = params ||{};
+          params.body = body;
+          notificationWindow.find(".notificationWindowBody").text(body);
+        };
 
-      var iconPath = $.trim($("#inputIcon").val());
-      if (iconPath !== "") {
-        var params = params ||{};
-         params.icon = iconPath;
-         $('<img />', { src: iconPath }).appendTo(notificationWindow.find(".notificationWindowIcon"));
-      };
+        var tag = $.trim($("#inputTag").val());
+        if (tag !== "") {
+          var params = params ||{};
+           params.tag = tag;
+           notificationWindow.find(".notificationWindowTag").text(tag);
+        };
 
-      var notificationWindowLog = notificationWindow.find(".log");
+        var iconPath = $.trim($("#inputIcon").val());
+        if (iconPath !== "") {
+          var params = params ||{};
+           params.icon = iconPath;
+           $('<img />', { src: iconPath }).appendTo(notificationWindow.find(".notificationWindowIcon"));
+        };
 
-      var n = (params) ? new Notification(title, params) : new Notification(title);
-      n.onclick = function() { addToLog(notificationWindowLog,"onclick") };
-      n.onclose = function() { addToLog(notificationWindowLog,"onclose") };
-      n.onreplaced = function() { addToLog(notificationWindowLog,"onreplaced") };
-      n.onerror = function() { addToLog(notificationWindowLog,"onerror") };
-      n.onshown = function() { addToLog(notificationWindowLog,"onshown") };
+        var notificationWindowLog = notificationWindow.find(".log");
 
-      notificationWindow.find(".notificationWindowCloseButton").on("click", function(){
-        n.close();
-      });
-      notificationWindow.appendTo($("#logNotificationWindow"));
-    }
+        var n = (params) ? new Notification(title, params) : new Notification(title);
+        n.onclick = function() { addToLog(notificationWindowLog,"onclick") };
+        n.onclose = function() { addToLog(notificationWindowLog,"onclose") };
+        n.onreplaced = function() { addToLog(notificationWindowLog,"onreplaced") };
+        n.onerror = function() { addToLog(notificationWindowLog,"onerror") };
+        n.onshown = function() { addToLog(notificationWindowLog,"onshown") };
 
-    function init(permission){
-      permission = permission || "default";
-      if ("default" === permission) {
-        $("#requestPermissionButton").on("click", function() {
-          Notification.requestPermission(function(permission){init(permission);});
+        notificationWindow.find(".notificationWindowCloseButton").on("click", function(){
+          n.close();
         });
-        $("#permissionRequestAlert").removeClass("hide");
-      } else {
-        $("#permissionRequestAlert").addClass("hide");
-        if ("denied" === permission) {
-          $("#permissionDeniedAlert").removeClass("hide");
-        } else if ("granted" === permission) {
-          $("#permissionGrantedAlert").removeClass("hide");
-        }
-        // todo: enable form
-        $("#sendButton").on("click", sendNoficiation);
+        notificationWindow.appendTo($("#logNotificationWindow"));
       }
-    }
 
-    var attempts = 0;
-    function waitForNotificationsAndInit() {
-      if (window['Notification'] === undefined) {
-        if (attempts < 50) {
-          attempts++;
-          setTimeout(waitForNotificationsAndInit, 100);
+      function init(permission){
+        permission = permission || "default";
+        if ("default" === permission) {
+          $("#requestPermissionButton").on("click", function() {
+            Notification.requestPermission(function(permission){init(permission);});
+          });
+          $("#permissionRequestAlert").removeClass("hide");
+        } else {
+          $("#permissionRequestAlert").addClass("hide");
+          if ("denied" === permission) {
+            $("#permissionDeniedAlert").removeClass("hide");
+          } else if ("granted" === permission) {
+            $("#permissionGrantedAlert").removeClass("hide");
+          }
+          // todo: enable form
+          $("#sendButton").on("click", sendNoficiation);
+        }
+      }
+
+      var attempts = 0;
+      function waitForNotificationsAndInit() {
+        if (window['Notification'] === undefined) {
+          if (attempts < 50) {
+            attempts++;
+            setTimeout(waitForNotificationsAndInit, 100);
+          } else {
+            $("#notificationDetecting").addClass("hide");
+            $("#notificationAbsenceAlert").removeClass("hide");
+          }
         } else {
           $("#notificationDetecting").addClass("hide");
-          $("#notificationAbsenceAlert").removeClass("hide");
+          init(Notification.permission);
         }
-      } else {
-        $("#notificationDetecting").addClass("hide");
-        init(Notification.permission);
       }
-    }
-    // It's required to queue the code using `window.Notification` because the
-    // latter is injected after `document.onload`.
-    waitForNotificationsAndInit();
-  </script>
+      // It's required to queue the code using `window.Notification` because the
+      // latter is injected after `document.onload`.
+      waitForNotificationsAndInit();
+    </script>
 
-  <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-  <script src="js/bootstrap-image-gallery.min.js"></script>
+    <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+    <script src="js/bootstrap-image-gallery.min.js"></script>
 
-  <script>
-    $(function(){
-      $("#welcome-screenshot").on("click", function(event){
-        event.preventDefault();
-        blueimp.Gallery($('#links a'), $('#blueimp-gallery').data());
+    <script>
+      $(function(){
+        $("#welcome-screenshot").on("click", function(event){
+          event.preventDefault();
+          blueimp.Gallery($('#links a'), $('#blueimp-gallery').data());
+        });
       });
-    });
-  </script>
+    </script>
 
-  <script>
-  function onDownloadNowClicked(el) {
-    ga('send', 'event', {
-      'eventCategory': 'Downloading',
-      'eventAction': 'DownloadNow',
-      'eventLabel': el.href
-    });
-    return true;
-  }
-  </script>
+    <script>
+    function onDownloadNowClicked(el) {
+      ga('send', 'event', {
+        'eventCategory': 'Downloading',
+        'eventAction': 'DownloadNow',
+        'eventLabel': el.href
+      });
+      return true;
+    }
+    </script>
 
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-60704441-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-60704441-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
 </html>
