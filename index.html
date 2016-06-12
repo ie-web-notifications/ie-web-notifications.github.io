@@ -9,144 +9,144 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
     <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
+    <style>
+      .navbar-default .navbar-brand {
+        color: black;
+        font-style: italic;
+        font-size: 26px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        font-family: "Times New Roman"
+      }
+      .navbar-default .navbar-brand:hover {
+        color: black;
+      }
+  
+      /*
+        Customization link
+        http://cssgradientbutton.com/?bg0=4CDA30&bg1=1CA32E&bg2=39b621&bg3=157722&r=3&p_top=10&p_right=10&p_bottom=10&p_left=10&w_auto=yes&w=150&text_c=FFFFFF&textshadow=yes&textshadow_c=000000&shadow_bt=0&shadow_c=B4B5B5&border_s=1&border_c=38b220&border_c_hover=2c8b19&f_size_auto=no&f_s=12&font=arial, helvetica, sans-serif&bold=yes&inset=no&s_x=0&s_y=0&s_b=0&t_s_px=-1&b_top=1&b_right=1&b_bottom=1&b_left=1&bt_c=38b220&br_c=38b220&bb_c=38b220&bl_c=38b220&bhover_top=1&bhover_right=1&bhover_bottom=1&bhover_left=1&bhover_t_c=2c8b19&bhover_r_c=2c8b19&bhover_b_c=2c8b19&bhover_l_c=2c8b19&bh_top=1&br_top=3&br_right=3&br_bottom=3&br_left=3&h_s=-1&v_s=-1&b_s=0&o_s=0.3
+      */
+      .downloadNow {
+        border:1px solid #38b220; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+        background-color: #4CDA30; background-image: -webkit-gradient(linear, left top, left bottom, from(#4CDA30), to(#1CA32E));
+        background-image: -webkit-linear-gradient(top, #4CDA30, #1CA32E);
+        background-image: -moz-linear-gradient(top, #4CDA30, #1CA32E);
+        background-image: -ms-linear-gradient(top, #4CDA30, #1CA32E);
+        background-image: -o-linear-gradient(top, #4CDA30, #1CA32E);
+        background-image: linear-gradient(to bottom, #4CDA30, #1CA32E);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#4CDA30, endColorstr=#1CA32E);
+        color: white;
+      }
+  
+      .downloadNow:hover {
+        border:1px solid #2c8b19;
+        background-color: #39b621; background-image: -webkit-gradient(linear, left top, left bottom, from(#39b621), to(#157722));
+        background-image: -webkit-linear-gradient(top, #39b621, #157722);
+        background-image: -moz-linear-gradient(top, #39b621, #157722);
+        background-image: -ms-linear-gradient(top, #39b621, #157722);
+        background-image: -o-linear-gradient(top, #39b621, #157722);
+        background-image: linear-gradient(to bottom, #39b621, #157722);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#39b621, endColorstr=#157722);
+        color: white;
+      }
+  
+      /*
+        Customization link
+        http://cssgradientbutton.com/?bg0=DA3C3A&bg1=8C1D1D&bg2=bd2524&bg3=621414&r=3&p_top=10&p_right=10&p_bottom=10&p_left=10&w_auto=yes&w=150&text_c=FFFFFF&textshadow=yes&textshadow_c=000000&shadow_bt=0&shadow_c=B4B5B5&border_s=1&border_c=b92523&border_c_hover=921d1c&f_size_auto=no&f_s=12&font=arial, helvetica, sans-serif&bold=yes&inset=no&s_x=0&s_y=0&s_b=0&t_s_px=-1&b_top=1&b_right=1&b_bottom=1&b_left=1&bt_c=b92523&br_c=b92523&bb_c=b92523&bl_c=b92523&bhover_top=1&bhover_right=1&bhover_bottom=1&bhover_left=1&bhover_t_c=921d1c&bhover_r_c=921d1c&bhover_b_c=921d1c&bhover_l_c=921d1c&bh_top=1&br_top=3&br_right=3&br_bottom=3&br_left=3&h_s=-1&v_s=-1&b_s=0&o_s=0.3
+      */
+      .fileIssue{
+        border:1px solid #b92523; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+        background-color: #DA3C3A; background-image: -webkit-gradient(linear, left top, left bottom, from(#DA3C3A), to(#8C1D1D));
+        background-image: -webkit-linear-gradient(top, #DA3C3A, #8C1D1D);
+        background-image: -moz-linear-gradient(top, #DA3C3A, #8C1D1D);
+        background-image: -ms-linear-gradient(top, #DA3C3A, #8C1D1D);
+        background-image: -o-linear-gradient(top, #DA3C3A, #8C1D1D);
+        background-image: linear-gradient(to bottom, #DA3C3A, #8C1D1D);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#DA3C3A, endColorstr=#8C1D1D);
+        color: white;
+      }
+  
+      .fileIssue:hover {
+        border:1px solid #921d1c;
+        background-color: #bd2524; background-image: -webkit-gradient(linear, left top, left bottom, from(#bd2524), to(#621414));
+        background-image: -webkit-linear-gradient(top, #bd2524, #621414);
+        background-image: -moz-linear-gradient(top, #bd2524, #621414);
+        background-image: -ms-linear-gradient(top, #bd2524, #621414);
+        background-image: -o-linear-gradient(top, #bd2524, #621414);
+        background-image: linear-gradient(to bottom, #bd2524, #621414);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#bd2524, endColorstr=#621414);
+        color: white;
+      }
+  
+      .quote {
+        box-shadow: 0px 0px 6px rgba(0,0,0,0.5);
+        border-left: 0.5em solid #DDD;
+        padding: 5px;
+        background-color: white;
+        line-height: 1.5;
+      }
+      .quote:before {
+        display: block;
+        height: 0;
+        margin-left: -0.95em;
+        font: italic 400%/1 Cochin,Georgia,"Times New Roman",serif;
+        color: #999;
+        content: "“";
+      }
+  
+      .hide {
+        display: none;
+      }
+    </style>
+    <style>
+      .notificationWindow {
+        width: 280px;
+        height: 60px;
+        background: white;
+        border: 1px solid #EFEFEF;
+      }
+      .notificationWindow > :first-child {
+        float: left;
+        width: 60px;
+        height: 60px;
+        background-color: #F0F0F0;
+      }
+      .notificationWindow > :nth-child(2){
+        padding-left: 65px;
+      }
+      .notificationWindowCloseButton {
+        float: right;
+        margin-right: 5px;
+        width: 20px;
+        height: 20px;
+        background-color: #EDEDED;
+        vertical-align: middle;
+        text-align: center;
+        font-family: "Consolas";
+        color: black;
+      }
+      .notificationWindowCloseButton:hover {
+        background-color: #FF0000;
+        color: black;
+        text-decoration: none;
+      }
+      .notificationWindowTitle {
+        font-weight: 500;
+        font-family: "Segoe UI";
+        font-size: 14px;
+      }
+      .notificationWindowBody {
+        font-family: "Segoe UI";
+        font-size: 12px;
+      }
+      .notificationWindowHeader {
+        padding-top: 2px;
+      }
+      .notificationWindowIcon > img {
+        height: 60px;
+        width: 60px;
+      }
+      #links > a > img {
+        width: 100px;
+      }
+    </style>
   </head>
-  <style>
-    .navbar-default .navbar-brand {
-      color: black;
-      font-style: italic;
-      font-size: 26px;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-      font-family: "Times New Roman"
-    }
-    .navbar-default .navbar-brand:hover {
-      color: black;
-    }
-
-    /*
-      Customization link
-      http://cssgradientbutton.com/?bg0=4CDA30&bg1=1CA32E&bg2=39b621&bg3=157722&r=3&p_top=10&p_right=10&p_bottom=10&p_left=10&w_auto=yes&w=150&text_c=FFFFFF&textshadow=yes&textshadow_c=000000&shadow_bt=0&shadow_c=B4B5B5&border_s=1&border_c=38b220&border_c_hover=2c8b19&f_size_auto=no&f_s=12&font=arial, helvetica, sans-serif&bold=yes&inset=no&s_x=0&s_y=0&s_b=0&t_s_px=-1&b_top=1&b_right=1&b_bottom=1&b_left=1&bt_c=38b220&br_c=38b220&bb_c=38b220&bl_c=38b220&bhover_top=1&bhover_right=1&bhover_bottom=1&bhover_left=1&bhover_t_c=2c8b19&bhover_r_c=2c8b19&bhover_b_c=2c8b19&bhover_l_c=2c8b19&bh_top=1&br_top=3&br_right=3&br_bottom=3&br_left=3&h_s=-1&v_s=-1&b_s=0&o_s=0.3
-    */
-    .downloadNow {
-      border:1px solid #38b220; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
-      background-color: #4CDA30; background-image: -webkit-gradient(linear, left top, left bottom, from(#4CDA30), to(#1CA32E));
-      background-image: -webkit-linear-gradient(top, #4CDA30, #1CA32E);
-      background-image: -moz-linear-gradient(top, #4CDA30, #1CA32E);
-      background-image: -ms-linear-gradient(top, #4CDA30, #1CA32E);
-      background-image: -o-linear-gradient(top, #4CDA30, #1CA32E);
-      background-image: linear-gradient(to bottom, #4CDA30, #1CA32E);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#4CDA30, endColorstr=#1CA32E);
-      color: white;
-    }
-
-    .downloadNow:hover {
-      border:1px solid #2c8b19;
-      background-color: #39b621; background-image: -webkit-gradient(linear, left top, left bottom, from(#39b621), to(#157722));
-      background-image: -webkit-linear-gradient(top, #39b621, #157722);
-      background-image: -moz-linear-gradient(top, #39b621, #157722);
-      background-image: -ms-linear-gradient(top, #39b621, #157722);
-      background-image: -o-linear-gradient(top, #39b621, #157722);
-      background-image: linear-gradient(to bottom, #39b621, #157722);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#39b621, endColorstr=#157722);
-      color: white;
-    }
-
-    /*
-      Customization link
-      http://cssgradientbutton.com/?bg0=DA3C3A&bg1=8C1D1D&bg2=bd2524&bg3=621414&r=3&p_top=10&p_right=10&p_bottom=10&p_left=10&w_auto=yes&w=150&text_c=FFFFFF&textshadow=yes&textshadow_c=000000&shadow_bt=0&shadow_c=B4B5B5&border_s=1&border_c=b92523&border_c_hover=921d1c&f_size_auto=no&f_s=12&font=arial, helvetica, sans-serif&bold=yes&inset=no&s_x=0&s_y=0&s_b=0&t_s_px=-1&b_top=1&b_right=1&b_bottom=1&b_left=1&bt_c=b92523&br_c=b92523&bb_c=b92523&bl_c=b92523&bhover_top=1&bhover_right=1&bhover_bottom=1&bhover_left=1&bhover_t_c=921d1c&bhover_r_c=921d1c&bhover_b_c=921d1c&bhover_l_c=921d1c&bh_top=1&br_top=3&br_right=3&br_bottom=3&br_left=3&h_s=-1&v_s=-1&b_s=0&o_s=0.3
-    */
-    .fileIssue{
-      border:1px solid #b92523; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
-      background-color: #DA3C3A; background-image: -webkit-gradient(linear, left top, left bottom, from(#DA3C3A), to(#8C1D1D));
-      background-image: -webkit-linear-gradient(top, #DA3C3A, #8C1D1D);
-      background-image: -moz-linear-gradient(top, #DA3C3A, #8C1D1D);
-      background-image: -ms-linear-gradient(top, #DA3C3A, #8C1D1D);
-      background-image: -o-linear-gradient(top, #DA3C3A, #8C1D1D);
-      background-image: linear-gradient(to bottom, #DA3C3A, #8C1D1D);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#DA3C3A, endColorstr=#8C1D1D);
-      color: white;
-    }
-
-    .fileIssue:hover {
-      border:1px solid #921d1c;
-      background-color: #bd2524; background-image: -webkit-gradient(linear, left top, left bottom, from(#bd2524), to(#621414));
-      background-image: -webkit-linear-gradient(top, #bd2524, #621414);
-      background-image: -moz-linear-gradient(top, #bd2524, #621414);
-      background-image: -ms-linear-gradient(top, #bd2524, #621414);
-      background-image: -o-linear-gradient(top, #bd2524, #621414);
-      background-image: linear-gradient(to bottom, #bd2524, #621414);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#bd2524, endColorstr=#621414);
-      color: white;
-    }
-
-    .quote {
-      box-shadow: 0px 0px 6px rgba(0,0,0,0.5);
-      border-left: 0.5em solid #DDD;
-      padding: 5px;
-      background-color: white;
-      line-height: 1.5;
-    }
-    .quote:before {
-      display: block;
-      height: 0;
-      margin-left: -0.95em;
-      font: italic 400%/1 Cochin,Georgia,"Times New Roman",serif;
-      color: #999;
-      content: "“";
-    }
-
-    .hide {
-      display: none;
-    }
-  </style>
-  <style>
-    .notificationWindow {
-      width: 280px;
-      height: 60px;
-      background: white;
-      border: 1px solid #EFEFEF;
-    }
-    .notificationWindow > :first-child {
-      float: left;
-      width: 60px;
-      height: 60px;
-      background-color: #F0F0F0;
-    }
-    .notificationWindow > :nth-child(2){
-      padding-left: 65px;
-    }
-    .notificationWindowCloseButton {
-      float: right;
-      margin-right: 5px;
-      width: 20px;
-      height: 20px;
-      background-color: #EDEDED;
-      vertical-align: middle;
-      text-align: center;
-      font-family: "Consolas";
-      color: black;
-    }
-    .notificationWindowCloseButton:hover {
-      background-color: #FF0000;
-      color: black;
-      text-decoration: none;
-    }
-    .notificationWindowTitle {
-      font-weight: 500;
-      font-family: "Segoe UI";
-      font-size: 14px;
-    }
-    .notificationWindowBody {
-      font-family: "Segoe UI";
-      font-size: 12px;
-    }
-    .notificationWindowHeader {
-      padding-top: 2px;
-    }
-    .notificationWindowIcon > img {
-      height: 60px;
-      width: 60px;
-    }
-    #links > a > img {
-      width: 100px;
-    }
-  </style>
   <body>
     <div class="navbar navbar-default navbar-fixed-top active">
       <div class="navbar-inner">
